@@ -52,7 +52,7 @@ canvas {
     margin: 40px;
     border-radius: 40px;
     font-weight: bold;
-    font-size: 4rem;
+    font-size: 8rem;
     cursor: pointer;
     position: relative; /* Make sure the day elements can contain positioned children */
 }
