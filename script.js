@@ -10,9 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
     canvas.style.position = 'absolute';
     canvas.style.pointerEvents = 'none';
     canvas.style.top = '0px';
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    document.body.appendChild(canvas); // Canvas is added here
+    canvas.style.left = '0px'; // Ensure canvas starts from the top-left
+    document.body.appendChild(canvas);
 
     const ctx = canvas.getContext('2d');
 
@@ -54,10 +53,15 @@ document.addEventListener("DOMContentLoaded", () => {
         snowflakes.push(createSnowflake());
     }
 
-    window.addEventListener('resize', () => {
+    // Update canvas size dynamically
+    const updateCanvasSize = () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-    });
+    };
+
+    // Set initial size and update on resize
+    updateCanvasSize();
+    window.addEventListener('resize', updateCanvasSize);
 
     window.addEventListener('scroll', () => {
         canvas.style.top = `${window.scrollY}px`;
