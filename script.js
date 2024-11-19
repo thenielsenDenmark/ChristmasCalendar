@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     canvas.style.top = '0px';
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    document.body.appendChild(canvas);
+    document.body.appendChild(canvas); // Canvas is added here
 
     const ctx = canvas.getContext('2d');
 
