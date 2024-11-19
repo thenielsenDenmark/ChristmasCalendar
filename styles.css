@@ -1,9 +1,9 @@
 /* Prevent scrolling and ensure full viewport height */
 html, body {
-    height: 100%;        /* Ensure full height for both html and body */
-    margin: 0;           /* Remove default margin */
-    padding: 0;          /* Remove default padding */
-    overflow: hidden;    /* Disable both vertical and horizontal scroll */
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Disable both vertical and horizontal scroll */
 }
 
 /* Body background and text alignment */
@@ -12,7 +12,7 @@ body {
     background-color: #fa0a3a; /* Red background */
     color: white;
     text-align: center;
-    overflow: hidden;    /* Ensure no scrollbars on the body */
+    overflow: hidden; /* Ensure no scrollbars on the body */
 }
 
 /* Heading styles */
@@ -54,6 +54,7 @@ canvas {
     font-weight: bold;
     font-size: 4rem;
     cursor: pointer;
+    position: relative; /* Make sure the day elements can contain positioned children */
 }
 
 /* Locking future days */
@@ -66,6 +67,13 @@ canvas {
 .day.open img {
     max-width: 100%;
     height: auto;
+    position: absolute; /* Position image absolutely within .day */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 40px; /* Keep image rounded like the day container */
 }
 
 /* Responsive image for the opened day */
