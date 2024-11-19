@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5428d;
+    background-color: #fa0a3a;
     color: white;
     text-align: center;
 }
@@ -23,10 +23,10 @@ h1 {
     display: inline-block; /* Keeps the day items side by side */
     background-color: white;
     color: black;
-    width: 100px;
-    height: 100px;
-    line-height: 100px;
-    margin: 10px; /* Adds spacing between numbers */
-    border-radius: 10px;
+    width: 200px;
+    height: 200px;
+    line-height: 200px;
+    margin: 20px; /* Adds spacing between numbers */
+    border-radius: 20px;
     font-weight: bold;
 }
