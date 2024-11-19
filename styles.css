@@ -1,12 +1,18 @@
-/* Ensures the body takes full width and height */
+/* Prevent scrolling and ensure full viewport height */
+html, body {
+    height: 100%;        /* Ensure full height for both html and body */
+    margin: 0;           /* Remove default margin */
+    padding: 0;          /* Remove default padding */
+    overflow: hidden;    /* Disable both vertical and horizontal scroll */
+}
+
+/* Body background and text alignment */
 body {
     font-family: Arial, sans-serif;
     background-color: #fa0a3a; /* Red background */
     color: white;
     text-align: center;
-    margin: 0;
-    padding: 0;
-    overflow: hidden; /* Prevents scrollbars caused by the canvas */
+    overflow: hidden;    /* Ensure no scrollbars on the body */
 }
 
 /* Heading styles */
