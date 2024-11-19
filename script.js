@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         day.addEventListener("click", () => {
             if (!day.classList.contains("locked")) {
                 day.classList.add("open");
-                day.innerHTML = `<img src="https://thenielsendenmark.github.io/ChristmasCalendar/images/${dayNumber}.jpg" alt="Surprise!">`;
+                day.innerHTML = `<img src="https://thenielsendenmark.github.io/ChristmasCalendar/images/${dayNumber}.jpg" alt="Surprise!" class="responsive">`;
 
             }
         });
