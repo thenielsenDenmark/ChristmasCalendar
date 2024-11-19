@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const style = document.createElement('style');
     style.innerHTML = `
         .responsive {
-            max-width: 100%;
+            max-width: 200%;
             height: auto;
         }
     `;
