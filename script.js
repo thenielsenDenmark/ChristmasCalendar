@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Snowflake animation
     const NUMBER_OF_SNOWFLAKES = 900;
-    const MAX_SNOWFLAKE_SIZE = 10;
-    const MAX_SNOWFLAKE_SPEED = 2;
+    const MAX_SNOWFLAKE_SIZE = 5;
+    const MAX_SNOWFLAKE_SPEED = 1;
     const SNOWFLAKE_COLOUR = '#ddd';
     const snowflakes = [];
 
