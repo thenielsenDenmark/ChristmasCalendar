@@ -30,3 +30,8 @@ h1 {
     border-radius: 5px;
     font-weight: bold;
 }
+
+.responsive {
+  width: 100%;
+  height: auto;
+}
