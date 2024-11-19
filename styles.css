@@ -1,83 +1,81 @@
-/* Prevent scrolling and ensure full viewport height */
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden; /* Disable both vertical and horizontal scroll */
-}
-
-/* Body background and text alignment */
+/* General body and font styling */
 body {
     font-family: Arial, sans-serif;
-    background-color: #fa0a3a; /* Red background */
+    background-color: #fa0a3a;
     color: white;
     text-align: center;
-    overflow: hidden; /* Ensure no scrollbars on the body */
+    margin: 0;
+    padding: 0;
 }
 
-/* Heading styles */
 h1 {
     color: white;
     margin-bottom: 100px; /* Adds spacing between the heading and calendar */
     font-size: 4rem;
-}
-
-/* Canvas styles */
-canvas {
-    position: absolute;
-    pointer-events: none;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    line-height: 1.2;
 }
 
 /* Calendar container */
 .calendar {
-    display: block;
+    display: flex;
+    flex-wrap: wrap; /* Ensures the days wrap onto new lines */
+    justify-content: center; /* Centers the days horizontally */
     margin: 0 auto;
-    text-align: center;
-    clear: both;
-    z-index: 1; /* Ensures it is above the canvas */
+    padding: 20px; /* Adds padding to avoid sticking to the edges */
 }
 
-/* Day styles */
+/* Day element */
 .day {
     display: inline-block;
     background-color: white;
     color: black;
     width: 400px;
     height: 400px;
-    line-height: 400px;
+    line-height: 400px; /* Vertically centers the number inside the box */
     margin: 40px;
     border-radius: 40px;
     font-weight: bold;
-    font-size: 8rem;
+    font-size: 4rem;
+    text-align: center;
     cursor: pointer;
-    position: relative; /* Make sure the day elements can contain positioned children */
+    position: relative;
+    transition: transform 0.3s ease;
 }
 
-/* Locking future days */
-.day.locked {
-    background-color: #ccc;
-    cursor: not-allowed;
+.day:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
 }
 
-/* Opened day with image */
-.day.open img {
-    max-width: 100%;
-    height: auto;
-    position: absolute; /* Position image absolutely within .day */
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    border-radius: 40px; /* Keep image rounded like the day container */
+/* Responsive Design - Adjust font sizes and layout for smaller screens */
+
+/* Medium screens (tablets) */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3rem; /* Adjust font size for tablets */
+        margin-bottom: 50px;
+    }
+
+    .day {
+        width: 300px;
+        height: 300px;
+        line-height: 300px;
+        font-size: 3rem;
+        margin: 20px;
+    }
 }
 
-/* Responsive image for the opened day */
-.responsive {
-    max-width: 100%;
-    height: auto;
+/* Small screens (phones) */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2.5rem; /* Adjust font size for mobile */
+        margin-bottom: 30px;
+    }
+
+    .day {
+        width: 250px;
+        height: 250px;
+        line-height: 250px;
+        font-size: 2.5rem;
+        margin: 15px;
+    }
 }
