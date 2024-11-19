@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         day.addEventListener("click", () => {
             if (!day.classList.contains("locked")) {
                 day.classList.add("open");
-                day.innerHTML = `<img src="images/${dayNumber}.jpg" alt="Surprise!">`;
+                day.innerHTML = `<img src="main/images/${dayNumber}.jpg" alt="Surprise!">`;
             }
         });
     });
