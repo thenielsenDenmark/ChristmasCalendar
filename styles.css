@@ -23,11 +23,11 @@ h1 {
     display: inline-block; /* Keeps the day items side by side */
     background-color: white;
     color: black;
-    width: 500px;
-    height: 500px;
-    line-height: 500px;
-    margin: 50px; /* Adds spacing between numbers */
-    border-radius: 50px;
+    width: 400px;
+    height: 400px;
+    line-height: 400px;
+    margin: 40px; /* Adds spacing between numbers */
+    border-radius: 40px;
     font-weight: bold;
     font-size: 36px; /* Adjust this value as needed */
 }
