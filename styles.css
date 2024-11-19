@@ -18,8 +18,8 @@ h1 {
 /* Calendar container */
 .calendar {
     display: flex;
-    flex-wrap: wrap; /* Ensures the days wrap onto new lines */
-    justify-content: center; /* Centers the days horizontally */
+    flex-wrap: wrap; /* Allows items to wrap */
+    justify-content: center; /* Centers the items horizontally */
     margin: 0 auto;
     padding: 20px; /* Adds padding to avoid sticking to the edges */
 }
@@ -29,13 +29,13 @@ h1 {
     display: inline-block;
     background-color: white;
     color: black;
-    width: 400px;
-    height: 400px;
+    width: 400px; /* Default width for large screens */
+    height: 400px; /* Default height */
     line-height: 400px; /* Vertically centers the number inside the box */
-    margin: 40px;
+    margin: 40px; /* Adds space between days */
     border-radius: 40px;
     font-weight: bold;
-    font-size: 4rem;
+    font-size: 4rem; /* Default font size */
     text-align: center;
     cursor: pointer;
     position: relative;
@@ -56,11 +56,11 @@ h1 {
     }
 
     .day {
-        width: 300px;
-        height: 300px;
-        line-height: 300px;
-        font-size: 3rem;
-        margin: 20px;
+        width: 250px; /* Smaller width for tablet */
+        height: 250px; /* Smaller height for tablet */
+        line-height: 250px; /* Adjust line-height to match the new height */
+        font-size: 3rem; /* Smaller font size for tablet */
+        margin: 20px; /* Reduce margin to fit more days */
     }
 }
 
@@ -72,10 +72,14 @@ h1 {
     }
 
     .day {
-        width: 250px;
-        height: 250px;
-        line-height: 250px;
-        font-size: 2.5rem;
-        margin: 15px;
+        width: 200px; /* Even smaller width for mobile */
+        height: 200px; /* Even smaller height for mobile */
+        line-height: 200px; /* Adjust line-height for mobile */
+        font-size: 2.5rem; /* Smaller font size for mobile */
+        margin: 10px; /* Reduce margin to fit more days */
+    }
+
+    .calendar {
+        padding: 10px; /* Adjust padding for mobile */
     }
 }
