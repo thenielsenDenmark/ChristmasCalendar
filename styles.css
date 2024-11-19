@@ -1,0 +1,32 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5428d;
+    color: white;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    margin-bottom: 20px; /* Adds spacing between the heading and calendar */
+    font-size: 2.5rem;
+}
+
+.calendar {
+    display: block; /* Ensures the calendar starts on a new line */
+    margin: 0 auto; /* Centers the calendar on the page */
+    text-align: center; /* Aligns calendar items */
+    clear: both; /* Clears any floating elements */
+}
+
+.day {
+    display: inline-block; /* Keeps the day items side by side */
+    background-color: white;
+    color: black;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    margin: 5px; /* Adds spacing between numbers */
+    border-radius: 5px;
+    font-weight: bold;
+}
