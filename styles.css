@@ -9,7 +9,7 @@ h1 {
     text-align: center;
     color: white;
     margin-bottom: 100px; /* Adds spacing between the heading and calendar */
-    font-size: 2.5rem;
+    font-size: 4rem;
 }
 
 .calendar {
@@ -29,5 +29,5 @@ h1 {
     margin: 40px; /* Adds spacing between numbers */
     border-radius: 40px;
     font-weight: bold;
-    font-size: 2.5rem; /* Adjust this value as needed */
+    font-size: 4rem; /* Adjust this value as needed */
 }
