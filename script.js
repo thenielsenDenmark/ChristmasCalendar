@@ -17,12 +17,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (width < 480) { // Mobile
             NUMBER_OF_SNOWFLAKES = 300;
-            MAX_SNOWFLAKE_SIZE = 3;
-            MAX_SNOWFLAKE_SPEED = 0.5;
+            MAX_SNOWFLAKE_SIZE = 1;
+            MAX_SNOWFLAKE_SPEED = 0.2;
         } else if (width < 768) { // Tablet
             NUMBER_OF_SNOWFLAKES = 600;
-            MAX_SNOWFLAKE_SIZE = 4;
-            MAX_SNOWFLAKE_SPEED = 0.7;
+            MAX_SNOWFLAKE_SIZE = 3;
+            MAX_SNOWFLAKE_SPEED = 0.5;
         } else { // Desktop
             NUMBER_OF_SNOWFLAKES = 900;
             MAX_SNOWFLAKE_SIZE = 5;
