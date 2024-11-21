@@ -5,6 +5,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const SNOWFLAKE_COLOUR = '#ddd';
     const snowflakes = [];
 
+    // Define article links for each day
+    const articleLinks = {
+        1: "https://medium.com/",
+        2: "https://google.com/",
+        // Add links for additional days
+    };
+
     // Create and configure the canvas
     const canvas = document.createElement('canvas');
     document.body.appendChild(canvas);
@@ -66,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Calendar functionality
     const today = new Date().getDate();
     const days = document.querySelectorAll(".day");
+
     days.forEach(day => {
         const dayNumber = parseInt(day.dataset.day, 10);
         if (dayNumber > today) {
@@ -75,27 +83,28 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!day.classList.contains("locked")) {
                 day.classList.add("open");
                 
-                // Dynamically set the size and content of the image
+                // Create a hyperlink element
+                const link = document.createElement('a');
+                link.href = articleLinks[dayNumber] || "#"; // Use the URL or fallback to '#'
+                link.target = "_blank"; // Open in a new tab
+                link.style.display = "block"; // Ensure the link covers the block
+                link.style.width = "100%";
+                link.style.height = "100%";
+
+                // Create an image element
                 const img = document.createElement('img');
                 img.src = `images/${dayNumber}.jpg`;
-                img.alt = "Surprise!";
-                img.style.width = "100%"; // Match the width of the block
-                img.style.height = "100%"; // Match the height of the block
-                img.style.objectFit = "cover"; // Ensure image fits the block without distortion
-                
-                // Add the image to the block
+                img.alt = `Surprise for Day ${dayNumber}`;
+                img.style.width = "100%"; // Match block size
+                img.style.height = "100%"; // Match block size
+                img.style.objectFit = "cover"; // Ensure image scales properly
+
+                // Append the image to the link
+                link.appendChild(img);
+
+                // Replace the content of the day block with the link
                 day.innerHTML = '';
-                day.appendChild(img);
-
-                // Disable scrolling
-                document.body.style.overflow = "hidden";
-
-                // Restore scrolling when the image is closed
-                img.addEventListener("click", () => {
-                    day.classList.remove("open");
-                    day.innerHTML = dayNumber; // Restore original content
-                    document.body.style.overflow = ""; // Enable scrolling
-                });
+                day.appendChild(link);
             }
         });
     });
