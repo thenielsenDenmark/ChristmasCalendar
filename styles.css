@@ -2,14 +2,20 @@
 html, body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Prevent horizontal scrolling but allow vertical scrolling */
-    height: auto; /* Let the body grow dynamically based on content */
-    width: 100%; /* Prevent accidental horizontal overflow */
+    overflow-y: scroll; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    height: auto; /* Allow content to grow dynamically */
+    width: 100%;
     font-family: Arial, sans-serif;
     background-color: #fa0a3a;
     color: white;
     text-align: center;
-    position: relative; /* Allows layering for overlapping elements */
+    position: relative;
+    scrollbar-width: none; /* Firefox: Hides scrollbar */
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari: Hides scrollbar */
 }
 
 /* Main heading */
