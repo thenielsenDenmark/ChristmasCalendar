@@ -2,8 +2,8 @@
 html, body {
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Prevent scrollbars */
-    height: 100%; /* Ensure content fits within viewport */
+    overflow-x: hidden; /* Prevent horizontal scrolling but allow vertical scrolling */
+    height: auto; /* Let the body grow dynamically based on content */
     width: 100%; /* Prevent accidental horizontal overflow */
     font-family: Arial, sans-serif;
     background-color: #fa0a3a;
@@ -31,6 +31,7 @@ h1 {
     padding: 20px; /* Add space around the calendar */
     z-index: 10; /* Ensure calendar is above the canvas */
     position: relative;
+    max-width: 100%; /* Prevent horizontal overflow for large screens */
 }
 
 /* Individual day element */
