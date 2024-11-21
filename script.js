@@ -74,7 +74,28 @@ document.addEventListener("DOMContentLoaded", () => {
         day.addEventListener("click", () => {
             if (!day.classList.contains("locked")) {
                 day.classList.add("open");
-                day.innerHTML = `<img src="images/${dayNumber}.jpg" alt="Surprise!" class="responsive">`;
+                
+                // Dynamically set the size and content of the image
+                const img = document.createElement('img');
+                img.src = `images/${dayNumber}.jpg`;
+                img.alt = "Surprise!";
+                img.style.width = "100%"; // Match the width of the block
+                img.style.height = "100%"; // Match the height of the block
+                img.style.objectFit = "cover"; // Ensure image fits the block without distortion
+                
+                // Add the image to the block
+                day.innerHTML = '';
+                day.appendChild(img);
+
+                // Disable scrolling
+                document.body.style.overflow = "hidden";
+
+                // Restore scrolling when the image is closed
+                img.addEventListener("click", () => {
+                    day.classList.remove("open");
+                    day.innerHTML = dayNumber; // Restore original content
+                    document.body.style.overflow = ""; // Enable scrolling
+                });
             }
         });
     });
