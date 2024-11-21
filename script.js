@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const NUMBER_OF_SNOWFLAKES = 900;
-    const MAX_SNOWFLAKE_SIZE = 5;
-    const MAX_SNOWFLAKE_SPEED = 1;
+    let NUMBER_OF_SNOWFLAKES = 900;
+    let MAX_SNOWFLAKE_SIZE = 5;
+    let MAX_SNOWFLAKE_SPEED = 1;
     const SNOWFLAKE_COLOUR = '#ddd';
     const snowflakes = [];
 
@@ -9,7 +9,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const articleLinks = {
         1: "https://medium.com/",
         2: "https://google.com/",
-        // Add links for additional days
+    };
+
+    // Function to adjust snowflake settings based on viewport size
+    const adjustSnowflakeSettings = () => {
+        const width = window.innerWidth;
+
+        if (width < 480) { // Mobile
+            NUMBER_OF_SNOWFLAKES = 300;
+            MAX_SNOWFLAKE_SIZE = 3;
+            MAX_SNOWFLAKE_SPEED = 0.5;
+        } else if (width < 768) { // Tablet
+            NUMBER_OF_SNOWFLAKES = 600;
+            MAX_SNOWFLAKE_SIZE = 4;
+            MAX_SNOWFLAKE_SPEED = 0.7;
+        } else { // Desktop
+            NUMBER_OF_SNOWFLAKES = 900;
+            MAX_SNOWFLAKE_SIZE = 5;
+            MAX_SNOWFLAKE_SPEED = 1;
+        }
     };
 
     // Create and configure the canvas
@@ -56,8 +74,9 @@ document.addEventListener("DOMContentLoaded", () => {
         requestAnimationFrame(animate);
     };
 
-    // Adjust canvas size dynamically
+    // Adjust canvas size and recreate snowflakes dynamically
     const updateCanvasSize = () => {
+        adjustSnowflakeSettings(); // Adjust settings based on screen size
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         snowflakes.length = 0;
@@ -85,9 +104,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 
                 // Create a hyperlink element
                 const link = document.createElement('a');
-                link.href = articleLinks[dayNumber] || "#"; // Use the URL or fallback to '#'
-                link.target = "_blank"; // Open in a new tab
-                link.style.display = "block"; // Ensure the link covers the block
+                link.href = articleLinks[dayNumber] || "#";
+                link.target = "_blank";
+                link.style.display = "block";
                 link.style.width = "100%";
                 link.style.height = "100%";
 
@@ -95,9 +114,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 const img = document.createElement('img');
                 img.src = `images/${dayNumber}.jpg`;
                 img.alt = `Surprise for Day ${dayNumber}`;
-                img.style.width = "100%"; // Match block size
-                img.style.height = "100%"; // Match block size
-                img.style.objectFit = "cover"; // Ensure image scales properly
+                img.style.width = "100%";
+                img.style.height = "100%";
+                img.style.objectFit = "cover";
 
                 // Append the image to the link
                 link.appendChild(img);
