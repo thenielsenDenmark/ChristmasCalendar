@@ -1,129 +1,99 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Christmas Calendar</title>
-    <style>
-        /* General body and font styling */
-        html, body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden; /* Prevent scrollbars */
-            height: 100%; /* Ensure content fits within viewport */
-            width: 100%;
-            font-family: Arial, sans-serif;
-            background-color: #fa0a3a;
-            color: white;
-            text-align: center;
-        }
+/* General body and font styling */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scrollbars */
+    height: 100%; /* Ensure content fits within viewport */
+    width: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #fa0a3a;
+    color: white;
+    text-align: center;
+    position: relative; /* Allow layering */
+}
 
-        h1 {
-            color: white;
-            margin-bottom: 100px; /* Adds spacing between the heading and calendar */
-            font-size: 4rem;
-            line-height: 1.2;
-        }
+h1 {
+    color: white;
+    margin-bottom: 100px; /* Adds spacing between the heading and calendar */
+    font-size: 4rem;
+    line-height: 1.2;
+    z-index: 10; /* Ensure heading appears above canvas */
+    position: relative;
+}
 
-        /* Calendar container */
-        .calendar {
-            display: flex;
-            flex-wrap: wrap; /* Allows items to wrap */
-            justify-content: center; /* Centers the items horizontally */
-            margin: 0 auto;
-            padding: 20px; /* Adds padding to avoid sticking to the edges */
-        }
+/* Calendar container */
+.calendar {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap */
+    justify-content: center; /* Centers the items horizontally */
+    margin: 0 auto;
+    padding: 20px; /* Adds padding to avoid sticking to the edges */
+    z-index: 10; /* Ensure calendar is above canvas */
+    position: relative;
+}
 
-        /* Day element */
-        .day {
-            display: inline-block;
-            background-color: white;
-            color: black;
-            width: 400px; /* Default width for large screens */
-            height: 400px; /* Default height */
-            line-height: 400px; /* Vertically centers the number inside the box */
-            margin: 40px; /* Adds space between days */
-            border-radius: 40px;
-            font-weight: bold;
-            font-size: 4rem; /* Default font size */
-            text-align: center;
-            cursor: pointer;
-            position: relative;
-            transition: transform 0.3s ease;
-        }
+/* Day element */
+.day {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency to see snow */
+    color: black;
+    width: 400px; /* Default width for large screens */
+    height: 400px; /* Default height */
+    line-height: 400px; /* Vertically centers the number inside the box */
+    margin: 40px; /* Adds space between days */
+    border-radius: 40px;
+    font-weight: bold;
+    font-size: 4rem; /* Default font size */
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s ease;
+}
 
-        .day:hover {
-            transform: scale(1.1); /* Slightly enlarge on hover */
-        }
+.day:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
 
-        /* Responsive Design - Adjust font sizes and layout for smaller screens */
+/* Responsive Design - Adjust font sizes and layout for smaller screens */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3rem; /* Adjust font size for tablets */
+        margin-bottom: 50px;
+    }
 
-        /* Medium screens (tablets) */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 3rem; /* Adjust font size for tablets */
-                margin-bottom: 50px;
-            }
+    .day {
+        width: 250px; /* Smaller width for tablet */
+        height: 250px; /* Smaller height for tablet */
+        line-height: 250px; /* Adjust line-height to match the new height */
+        font-size: 3rem; /* Smaller font size for tablet */
+        margin: 20px; /* Reduce margin to fit more days */
+    }
+}
 
-            .day {
-                width: 250px; /* Smaller width for tablet */
-                height: 250px; /* Smaller height for tablet */
-                line-height: 250px; /* Adjust line-height to match the new height */
-                font-size: 3rem; /* Smaller font size for tablet */
-                margin: 20px; /* Reduce margin to fit more days */
-            }
-        }
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2.5rem; /* Adjust font size for mobile */
+        margin-bottom: 30px;
+    }
 
-        /* Small screens (phones) */
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2.5rem; /* Adjust font size for mobile */
-                margin-bottom: 30px;
-            }
+    .day {
+        width: 200px; /* Even smaller width for mobile */
+        height: 200px; /* Even smaller height for mobile */
+        line-height: 200px; /* Adjust line-height for mobile */
+        font-size: 2.5rem; /* Smaller font size for mobile */
+        margin: 10px; /* Reduce margin to fit more days */
+    }
 
-            .day {
-                width: 200px; /* Even smaller width for mobile */
-                height: 200px; /* Even smaller height for mobile */
-                line-height: 200px; /* Adjust line-height for mobile */
-                font-size: 2.5rem; /* Smaller font size for mobile */
-                margin: 10px; /* Reduce margin to fit more days */
-            }
+    .calendar {
+        padding: 10px; /* Adjust padding for mobile */
+    }
+}
 
-            .calendar {
-                padding: 10px; /* Adjust padding for mobile */
-            }
-        }
-    </style>
-</head>
-<body>
-    <h1>Christmas Calendar</h1>
-    <div class="calendar">
-        <!-- Calendar days -->
-        <div class="day" data-day="1">1</div>
-        <div class="day" data-day="2">2</div>
-        <div class="day" data-day="3">3</div>
-        <div class="day" data-day="4">4</div>
-        <div class="day" data-day="5">5</div>
-        <div class="day" data-day="6">6</div>
-        <div class="day" data-day="7">7</div>
-        <div class="day" data-day="8">8</div>
-        <div class="day" data-day="9">9</div>
-        <div class="day" data-day="10">10</div>
-        <div class="day" data-day="11">11</div>
-        <div class="day" data-day="12">12</div>
-        <div class="day" data-day="13">13</div>
-        <div class="day" data-day="14">14</div>
-        <div class="day" data-day="15">15</div>
-        <div class="day" data-day="16">16</div>
-        <div class="day" data-day="17">17</div>
-        <div class="day" data-day="18">18</div>
-        <div class="day" data-day="19">19</div>
-        <div class="day" data-day="20">20</div>
-        <div class="day" data-day="21">21</div>
-        <div class="day" data-day="22">22</div>
-        <div class="day" data-day="23">23</div>
-        <div class="day" data-day="24">24</div>
-    </div>
-    <script src="script.js"></script>
-</body>
-</html>
+/* Canvas styling */
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Ensure snowflakes are below interactive elements */
+    pointer-events: none; /* Allow clicks to pass through to underlying elements */
+}
