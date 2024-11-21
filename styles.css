@@ -4,88 +4,104 @@ html, body {
     padding: 0;
     overflow: hidden; /* Prevent scrollbars */
     height: 100%; /* Ensure content fits within viewport */
-    width: 100%;
+    width: 100%; /* Prevent accidental horizontal overflow */
     font-family: Arial, sans-serif;
     background-color: #fa0a3a;
     color: white;
     text-align: center;
-    position: relative; /* Allow layering */
+    position: relative; /* Allows layering for overlapping elements */
 }
 
+/* Main heading */
 h1 {
     color: white;
-    margin-bottom: 100px; /* Adds spacing between the heading and calendar */
+    margin-bottom: 100px; /* Space between the heading and calendar */
     font-size: 4rem;
     line-height: 1.2;
-    z-index: 10; /* Ensure heading appears above canvas */
+    z-index: 10; /* Ensure heading appears above the canvas */
     position: relative;
 }
 
 /* Calendar container */
 .calendar {
     display: flex;
-    flex-wrap: wrap; /* Allows items to wrap */
-    justify-content: center; /* Centers the items horizontally */
+    flex-wrap: wrap; /* Allow items to wrap to the next row */
+    justify-content: center; /* Center the items horizontally */
     margin: 0 auto;
-    padding: 20px; /* Adds padding to avoid sticking to the edges */
-    z-index: 10; /* Ensure calendar is above canvas */
+    padding: 20px; /* Add space around the calendar */
+    z-index: 10; /* Ensure calendar is above the canvas */
     position: relative;
 }
 
-/* Day element */
+/* Individual day element */
 .day {
     display: inline-block;
-    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency to see snow */
+    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency for snowflake visibility */
     color: black;
-    width: 400px; /* Default width for large screens */
+    width: 400px; /* Default width for larger screens */
     height: 400px; /* Default height */
-    line-height: 400px; /* Vertically centers the number inside the box */
-    margin: 40px; /* Adds space between days */
-    border-radius: 40px;
+    line-height: 400px; /* Vertically center text */
+    margin: 40px; /* Add space between day blocks */
+    border-radius: 40px; /* Rounded corners */
     font-weight: bold;
     font-size: 4rem; /* Default font size */
     text-align: center;
     cursor: pointer;
     position: relative;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth scaling and shadow effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }
 
 .day:hover {
     transform: scale(1.1); /* Slightly enlarge on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
 }
 
-/* Responsive Design - Adjust font sizes and layout for smaller screens */
+/* Locked days styling */
+.day.locked {
+    background-color: rgba(128, 128, 128, 0.7); /* Dimmed look for locked days */
+    color: white;
+    cursor: not-allowed; /* Indicate non-clickable */
+}
+
+.day.locked:hover {
+    transform: none; /* Disable hover effects for locked days */
+    box-shadow: none;
+}
+
+/* Responsive Design - Tablet adjustments */
 @media (max-width: 768px) {
     h1 {
-        font-size: 3rem; /* Adjust font size for tablets */
-        margin-bottom: 50px;
+        font-size: 3rem; /* Adjust heading font size */
+        margin-bottom: 50px; /* Reduce margin */
     }
 
     .day {
-        width: 250px; /* Smaller width for tablet */
-        height: 250px; /* Smaller height for tablet */
-        line-height: 250px; /* Adjust line-height to match the new height */
-        font-size: 3rem; /* Smaller font size for tablet */
-        margin: 20px; /* Reduce margin to fit more days */
+        width: 250px; /* Adjust width for tablets */
+        height: 250px; /* Adjust height for tablets */
+        line-height: 250px; /* Align text vertically */
+        font-size: 3rem; /* Adjust font size */
+        margin: 20px; /* Reduce spacing between blocks */
     }
 }
 
+/* Responsive Design - Mobile adjustments */
 @media (max-width: 480px) {
     h1 {
-        font-size: 2.5rem; /* Adjust font size for mobile */
-        margin-bottom: 30px;
+        font-size: 2.5rem; /* Smaller font size for heading on mobile */
+        margin-bottom: 30px; /* Reduce spacing for smaller screens */
     }
 
     .day {
-        width: 200px; /* Even smaller width for mobile */
-        height: 200px; /* Even smaller height for mobile */
-        line-height: 200px; /* Adjust line-height for mobile */
-        font-size: 2.5rem; /* Smaller font size for mobile */
+        width: 200px; /* Adjust width for mobile devices */
+        height: 200px; /* Adjust height for mobile */
+        line-height: 200px; /* Align text vertically */
+        font-size: 2.5rem; /* Adjust font size for smaller blocks */
         margin: 10px; /* Reduce margin to fit more days */
     }
 
     .calendar {
-        padding: 10px; /* Adjust padding for mobile */
+        padding: 10px; /* Adjust padding for tighter fit */
     }
 }
 
@@ -94,6 +110,8 @@ canvas {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 1; /* Ensure snowflakes are below interactive elements */
-    pointer-events: none; /* Allow clicks to pass through to underlying elements */
+    z-index: 1; /* Ensure canvas is behind interactive elements */
+    pointer-events: none; /* Allow clicks to pass through to elements below */
+    width: 100%; /* Cover entire viewport width */
+    height: 100%; /* Cover entire viewport height */
 }
