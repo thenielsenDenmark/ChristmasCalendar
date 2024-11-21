@@ -51,22 +51,21 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const updateCanvasSize = () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+    const previousWidth = canvas.width;
+    const previousHeight = canvas.height;
 
-        // Reinitialize snowflakes when the canvas size changes
-        snowflakes.length = 0; // Clear existing snowflakes
-        for (let i = 0; i < NUMBER_OF_SNOWFLAKES; i++) {
-            snowflakes.push(createSnowflake());
-        }
-    };
+    // Update canvas size to match the new window size
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-    updateCanvasSize(); // Set the initial size
-    window.addEventListener('resize', updateCanvasSize);
-
-    window.addEventListener('scroll', () => {
-        canvas.style.top = `${window.scrollY}px`;
-    });
+    // Adjust snowflakes' positions proportionally
+    if (previousWidth > 0 && previousHeight > 0) {
+        snowflakes.forEach(snowflake => {
+            snowflake.x = (snowflake.x / previousWidth) * canvas.width;
+            snowflake.y = (snowflake.y / previousHeight) * canvas.height;
+        });
+    }
+};
 
     animate();
 
